@@ -5,12 +5,15 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
 
 public interface AccountController {
 
     @PostMapping("/account")
-    public AccountOut create(AccountIn in);
+    public AccountOut create(
+        @RequestBody AccountIn in
+    );
 
     @GetMapping("/account/{id}")
     public AccountOut findById(
@@ -21,7 +24,7 @@ public interface AccountController {
     public List<AccountOut> findAll();
 
     @DeleteMapping("/account/{id}")
-    public void delete(
+    public Void delete(
         @PathVariable("id") String id
     );
 
